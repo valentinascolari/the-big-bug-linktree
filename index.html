@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Preview JSX</title>
+
+    <!-- React + ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel (permite usar JSX dentro do script) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Tailwind opcional (se quiser suas classes funcionando) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      :root {
+        --gradient-main: linear-gradient(135deg, #3a0ca3, #7209b7);
+      }
+      .animate-scale-in {
+        animation: scaleIn 0.4s ease forwards;
+      }
+      @keyframes scaleIn {
+        from {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease forwards;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-white">
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // --------------------------
+      //  Componente LinkButton
+      // --------------------------
+      const LinkButton = ({ href, children, delay }) => (
+        <a
+          href={href}
+          style={{ animationDelay: `${delay}ms` }}
+          className="opacity-0 animate-fade-in block w-full bg-white text-center text-black py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform"
+        >
+          {children}
+        </a>
+      );
+
+      // --------------------------
+      //  Componente Index (seu JSX)
+      // --------------------------
+      const Index = () => {
+        const links = [
+          {
+            title: "Repositório",
+            url: "https://github.com/ainoolau/The-Big-Bug-Theory",
+          },
+
+          // Integrantes
+          {
+            title: "Valentina Scolari",
+            url: "https://www.linkedin.com/in/valentina-bechara-scolari/",
+          },
+          {
+            title: "Gustavo Becker",
+            url: "https://www.linkedin.com/in/gustavohenriquebecker/",
+          },
+          {
+            title: "Emily Quevedo",
+            url: "https://www.linkedin.com/in/emily-quevedo/",
+          },
+          {
+            title: "Gabriel Neu",
+            url: "https://www.linkedin.com/in/gabrielneu/",
+          },
+          {
+            title: "Hazel Montezuma",
+            url: "https://www.linkedin.com/in/ainoolaudev/?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+          },
+        ];
+
+        return (
+          <main
+            className="min-h-screen flex flex-col items-center justify-center px-4 py-12"
+            style={{ background: "var(--gradient-main)" }}
+          >
+            <div className="w-full max-w-md flex flex-col items-center gap-6">
+              {/* Avatar */}
+              <div
+                className="relative opacity-0 animate-scale-in"
+                style={{ animationDelay: "100ms" }}
+              >
+                <div className="w-28 h-28 rounded-full bg-purple-500 flex items-center justify-center">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-300 to-purple-600 flex items-center justify-center overflow-hidden">
+                    <span className="text-4xl">🎮</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Username */}
+              <h1
+                className="text-2xl font-bold opacity-0 animate-fade-in"
+                style={{ animationDelay: "200ms" }}
+              >
+                user & valorant
+              </h1>
+
+              {/* Bio */}
+              <p
+                className="text-center text-sm opacity-0 animate-fade-in"
+                style={{ animationDelay: "300ms" }}
+              ></p>
+
+              {/* Links */}
+              <nav className="w-full flex flex-col gap-3 mt-4">
+                {links.map((link, index) => (
+                  <LinkButton
+                    key={link.title}
+                    href={link.url}
+                    delay={400 + index * 100}
+                  >
+                    {link.title}
+                  </LinkButton>
+                ))}
+              </nav>
+
+              {/* Footer */}
+              <footer
+                className="mt-8 flex items-center gap-4 text-sm opacity-0 animate-fade-in"
+                style={{ animationDelay: "1100ms" }}
+              >
+          
+                <span>•</span>
+          
+              </footer>
+            </div>
+          </main>
+        );
+      };
+
+      // Renderiza no HTML
+      ReactDOM.createRoot(document.getElementById("root")).render(<Index />);
+    </script>
+  </body>
+</html>
