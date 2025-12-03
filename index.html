@@ -11,7 +11,7 @@
     <!-- Babel (permite usar JSX dentro do script) -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Tailwind opcional (se quiser suas classes funcionando) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -54,21 +54,28 @@
       const LinkButton = ({ href, children, delay }) => (
         <a
           href={href}
+          target="_blank"
           style={{ animationDelay: `${delay}ms` }}
-          className="opacity-0 animate-fade-in block w-full bg-white text-center text-black py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform"
+          className="opacity-0 animate-fade-in block w-full bg-white text-center text-black py-4 rounded-xl font-semibold 
+                     shadow-lg hover:scale-105 transition-transform text-lg"
         >
           {children}
         </a>
       );
 
       // --------------------------
-      //  Componente Index (seu JSX)
+      //  Componente Principal
       // --------------------------
       const Index = () => {
         const links = [
           {
             title: "Repositório",
             url: "https://github.com/ainoolau/The-Big-Bug-Theory",
+          },
+
+          {
+            title: "Documentação Explicativa do Projeto",
+            url: "https://drive.google.com/file/d/1HyZSHFE6MURnkfZ5sjx7c-0E2IJA0n2e/view?usp=sharing",
           },
 
           // Integrantes
@@ -96,38 +103,34 @@
 
         return (
           <main
-            className="min-h-screen flex flex-col items-center justify-center px-4 py-12"
+            className="min-h-screen flex flex-col items-center justify-center px-6 py-12"
             style={{ background: "var(--gradient-main)" }}
           >
-            <div className="w-full max-w-md flex flex-col items-center gap-6">
+            <div className="w-full max-w-xl flex flex-col items-center gap-8">
+
               {/* Avatar */}
               <div
                 className="relative opacity-0 animate-scale-in"
                 style={{ animationDelay: "100ms" }}
               >
-                <div className="w-28 h-28 rounded-full bg-purple-500 flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-300 to-purple-600 flex items-center justify-center overflow-hidden">
-                    <span className="text-4xl">🎮</span>
+                <div className="w-32 h-32 rounded-full bg-purple-500 flex items-center justify-center">
+                  <div className="w-28 h-28 rounded-full bg-gradient-to-br from-purple-300 to-purple-600 
+                                  flex items-center justify-center overflow-hidden">
+                    <span className="text-5xl">🎮</span>
                   </div>
                 </div>
               </div>
 
               {/* Username */}
               <h1
-                className="text-2xl font-bold opacity-0 animate-fade-in"
+                className="text-3xl font-bold opacity-0 animate-fade-in"
                 style={{ animationDelay: "200ms" }}
               >
                 user & valorant
               </h1>
 
-              {/* Bio */}
-              <p
-                className="text-center text-sm opacity-0 animate-fade-in"
-                style={{ animationDelay: "300ms" }}
-              ></p>
-
               {/* Links */}
-              <nav className="w-full flex flex-col gap-3 mt-4">
+              <nav className="w-full flex flex-col gap-4 mt-2">
                 {links.map((link, index) => (
                   <LinkButton
                     key={link.title}
@@ -141,12 +144,10 @@
 
               {/* Footer */}
               <footer
-                className="mt-8 flex items-center gap-4 text-sm opacity-0 animate-fade-in"
+                className="mt-6 flex items-center gap-4 text-sm opacity-0 animate-fade-in"
                 style={{ animationDelay: "1100ms" }}
               >
-          
                 <span>•</span>
-          
               </footer>
             </div>
           </main>
