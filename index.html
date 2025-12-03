@@ -2,7 +2,7 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <title>Preview JSX</title>
+    <title>Projeto — user & valorant</title>
 
     <!-- React + ReactDOM -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -18,87 +18,71 @@
       :root {
         --gradient-main: linear-gradient(135deg, #3a0ca3, #7209b7);
       }
+
+      /* GARANTE botões grandes em qualquer dispositivo */
+      .big-button {
+        padding: 18px 0 !important;
+        font-size: 20px !important;
+        border-radius: 16px !important;
+        font-weight: 700 !important;
+      }
+
       .animate-scale-in {
         animation: scaleIn 0.4s ease forwards;
       }
       @keyframes scaleIn {
-        from {
-          transform: scale(0.7);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1);
-          opacity: 1;
-        }
+        from { transform: scale(0.7); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
       }
+
       .animate-fade-in {
         animation: fadeIn 0.5s ease forwards;
       }
       @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
+        from { opacity: 0; }
+        to { opacity: 1; }
       }
     </style>
   </head>
+
   <body class="text-white">
     <div id="root"></div>
 
     <script type="text/babel">
       // --------------------------
-      //  Componente LinkButton
+      //  BOTÃO GRANDE ESTILO LINKTREE
       // --------------------------
       const LinkButton = ({ href, children, delay }) => (
         <a
           href={href}
           target="_blank"
           style={{ animationDelay: `${delay}ms` }}
-          className="opacity-0 animate-fade-in block w-full bg-white text-center text-black py-4 rounded-xl font-semibold 
-                     shadow-lg hover:scale-105 transition-transform text-lg"
+          className="
+            big-button
+            opacity-0 animate-fade-in
+            block w-full text-center text-black 
+            bg-white shadow-xl 
+            hover:scale-105 transition-transform
+          "
         >
           {children}
         </a>
       );
 
       // --------------------------
-      //  Componente Principal
+      //  COMPOSIÇÃO PRINCIPAL
       // --------------------------
       const Index = () => {
         const links = [
-          {
-            title: "Repositório",
-            url: "https://github.com/ainoolau/The-Big-Bug-Theory",
-          },
-
-          {
-            title: "Documentação Explicativa do Projeto",
-            url: "https://drive.google.com/file/d/1HyZSHFE6MURnkfZ5sjx7c-0E2IJA0n2e/view?usp=sharing",
-          },
+          { title: "Repositório", url: "https://github.com/ainoolau/The-Big-Bug-Theory" },
+          { title: "PDF do Projeto", url: "https://drive.google.com/file/d/1HyZSHFE6MURnkfZ5sjx7c-0E2IJA0n2e/view?usp=sharing" },
 
           // Integrantes
-          {
-            title: "Valentina Scolari",
-            url: "https://www.linkedin.com/in/valentina-bechara-scolari/",
-          },
-          {
-            title: "Gustavo Becker",
-            url: "https://www.linkedin.com/in/gustavohenriquebecker/",
-          },
-          {
-            title: "Emily Quevedo",
-            url: "https://www.linkedin.com/in/emily-quevedo/",
-          },
-          {
-            title: "Gabriel Neu",
-            url: "https://www.linkedin.com/in/gabrielneu/",
-          },
-          {
-            title: "Hazel Montezuma",
-            url: "https://www.linkedin.com/in/ainoolaudev/?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-          },
+          { title: "Valentina Scolari", url: "https://www.linkedin.com/in/valentina-bechara-scolari/" },
+          { title: "Gustavo Becker", url: "https://www.linkedin.com/in/gustavohenriquebecker/" },
+          { title: "Emily Quevedo", url: "https://www.linkedin.com/in/emily-quevedo/" },
+          { title: "Gabriel Neu", url: "https://www.linkedin.com/in/gabrielneu/" },
+          { title: "Hazel Montezuma", url: "https://www.linkedin.com/in/ainoolaudev/" },
         ];
 
         return (
@@ -106,31 +90,30 @@
             className="min-h-screen flex flex-col items-center justify-center px-6 py-12"
             style={{ background: "var(--gradient-main)" }}
           >
-            <div className="w-full max-w-xl flex flex-col items-center gap-8">
+            <div className="w-full max-w-xl flex flex-col items-center gap-10">
 
               {/* Avatar */}
               <div
                 className="relative opacity-0 animate-scale-in"
                 style={{ animationDelay: "100ms" }}
               >
-                <div className="w-32 h-32 rounded-full bg-purple-500 flex items-center justify-center">
-                  <div className="w-28 h-28 rounded-full bg-gradient-to-br from-purple-300 to-purple-600 
-                                  flex items-center justify-center overflow-hidden">
-                    <span className="text-5xl">🎮</span>
+                <div className="w-36 h-36 rounded-full bg-purple-500 flex items-center justify-center shadow-2xl">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-300 to-purple-600 flex items-center justify-center overflow-hidden">
+                    <span className="text-6xl">🎮</span>
                   </div>
                 </div>
               </div>
 
-              {/* Username */}
+              {/* Nome */}
               <h1
-                className="text-3xl font-bold opacity-0 animate-fade-in"
+                className="text-4xl font-bold opacity-0 animate-fade-in tracking-wide"
                 style={{ animationDelay: "200ms" }}
               >
                 user & valorant
               </h1>
 
-              {/* Links */}
-              <nav className="w-full flex flex-col gap-4 mt-2">
+              {/* Botões */}
+              <nav className="w-full flex flex-col gap-5 mt-2">
                 {links.map((link, index) => (
                   <LinkButton
                     key={link.title}
@@ -145,7 +128,7 @@
               {/* Footer */}
               <footer
                 className="mt-6 flex items-center gap-4 text-sm opacity-0 animate-fade-in"
-                style={{ animationDelay: "1100ms" }}
+                style={{ animationDelay: "1200ms" }}
               >
                 <span>•</span>
               </footer>
@@ -154,7 +137,6 @@
         );
       };
 
-      // Renderiza no HTML
       ReactDOM.createRoot(document.getElementById("root")).render(<Index />);
     </script>
   </body>
